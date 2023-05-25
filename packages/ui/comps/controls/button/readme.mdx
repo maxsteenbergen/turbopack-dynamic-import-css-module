@@ -1,0 +1,140 @@
+import Button from "./index";
+
+
+
+# Functional description
+
+## Description of the problem
+In order to assess how various pieces of equipment affect each other's performance, requests for a so-called `Performance Curve` have been made.
+Performance Curves are a type of graph in which some value is plotted on one axis against some other value on the other axis. This shows what the $y$ value was at the time any given sample of the $x$ value was taken. The more samples taken, the more refined the resulting graph will be.
+Other than a "regular" trend graph, a Performance Curve is not a chronological sequence of samples, but rather, the resulting curve is an average of all samples in a given period.
+
+## Description of the solution
+The proposed Performance Curve is a new mode of the existing Trend Graph component: after all, both graphs plot a value on the $x$ axis against another value on the $y$ axis. Given that the Trend Graph already has methods in place to affect what is plotted over the $y$ axis, we can re-use that for the Performance Curve. As such, toggling between Trend mode and Performance mode is as simple as assigning either `Chronological`, or an AMCS field to _the $x$ axis_. If the $x$ axis is set to `Chronological`, the graph is in its regular old Trend mode. By switch to a Field for the $x$ axis, the graph switches to its Performance mode.
+
+
+The controls to choose the value for the $x$ axis are located in the Legend. There, a segmented control is to be added to toggle the $x$ axis between either `Chronological` or `Performance` modes. When in Performance mode, a radio button control is added to the left of the chosen fields in the legend. The (single) selection of this radio button determines which field is used as value for the $x$ axis.
+
+
+Also while in Performance mode, the Alert level indications that are commonly placed for each highlighted $y$ value are also rendered for the $x$ value, but naturally rotated 90 degrees.
+
+Regardless of the selection of values, a plot is made. This plot is made up of all samples for each $x$ and $y$ value over the period of time as determined by the bottom scrollbar. For each sample returned, a small semi-transparent dot is placed on the graph. Ultimately, this should result in a "Point Cloud". To keep the component responsive and user friendly, we should display each sample as soon as it's retrieved from source of history (likely the Data Logger). This should help prevent keeping the operator waiting before seeing any useful data: the longer a Performance Curve is open, the more samples have been returned over time and thus the more refined the Point Cloud will be.
+
+
+> Note: the design below does _not_ use a Point Cloud, but rather traces the outline of the edges of the entirety of samples as a whole (simply because it was faster to mock up). There's no preference for either visualisation other than the most performant one.
+
+---
+
+In order to keep work manageable, deliver an MVP _and_ allow time to further develop this instrument's dependencies (e.g. the Data Logger), the work has been split into 4 separate phases. Currently, we only need concern ourselves with **Phase 1**.
+
+
+### Phase 1: Scaffolding of UI, and Point Cloud only
+- Development of the basic mode switching logic and controls
+- Rework / expansion upon the Trend Graph base.
+- Development of the Point Cloud
+- Ranges of $x$ and $y$ axis fixed to their respective min/max values
+
+
+### Phase 2: Interpolated average curve **[ON-HOLD]**
+Implementation of an interpolated, average performance curve.
+The instrument is to display the min/max and average $y$ value for each corresponding $x$ value. The crosshairs will remain fixed on this curve upon moving the cursor over the instrument.
+The Data Logger is, in theory, much better equipped to calculate performance curves than a regular AMCS client can. This phase therefore also includes additional work on the Data Logger to accommodate this functionality.
+
+### Phase 3: Filtering of hysteresis **[ON-HOLD]**
+Implementation of filtered values for stable $x$ values. With this filter, the instrument can take into account any potential hysteresis of $y$ values. For example, if fuel supply is increased to benefit propulsion, its net result of speeding up is not immediately visible.
+
+### Phase 4: Runtime sample collection and processing **[ON-HOLD]**
+Implementation / rework of the scrollbar, enabling quickly scrolling through through intervals with the curve responding accordingly. This allows the operator to better judge whether or not performance is declining or indeed improving over time.
+
+---
+
+## Functional acceptance criteria for Phase 1
+- Functionality for values rendered over the $y$ axis is equal across modes
+- Operator is able to toggle between Trend and Performance mode at runtime
+- Operator is able to select which item from the legend is used as $x$ value
+- The graph displays samples as soon they are retrieved, and communicates to the operator if it is still actively receiving samples.
+- The mouse cursor controls a crosshairs-like overlay while hovering over the graph in order to ease readout of the values of the axes at those specific coordinates.
+
+Acceptance criteria for the remaining phases are to be determined in due time.
+
+## Boundaries
+- Trend presets _may_ store the Graph's mode at the time of saving, but are not locked to that mode. This is nice to have and the first thing to drop if necessary.
+- Only work to achieve Phase 1 is relevant at this point.
+
+## Pitfalls & edge cases
+- The effect on  Compact mode has not been evaluated at this time. We'll just wait and see what happens with the initial development to determine how we can make both modes (Performance & Compact) compatible if there are any issues.
+
+---
+
+
+# Implementation blueprint
+Any blueprint may be placed as-is in this document or as sub-page of this page. If the latter, link it here.  
+In any case, blueprints should address the following:
+
+## Non-functional acceptance criteria
+Distill the functional feature description to non-functional acceptance criteria. This can pertain to technical requirements, such as performance or data formats, that are identified by developers, and are not part of the functional description.
+
+## Planned code changes
+What are the technical steps needed (either necessary or proposed) to realize this feature?
+
+## Rough PBI decomposition
+
+## Impact assessment
+What does this mean in terms of impact on the current state of the application?
+
+And how many hours do we need for this?
+
+### Development hours
+_For example:_
+- _Orientation_
+- _Dev PBI 1_
+- _Dev PBI 2_
+- _Dev testing_
+- _Reviewing & Review_
+- _Documentation_
+- _Bug fixing_ (20% of above)
+
+Total dev hours:
+
+### Testing
+_For example:_
+- _Orientation_
+- _Writing testcases_
+- _Testcase review_
+- _Preparing test environment_
+- _Testing_
+- _Retesting / bugtesting_
+
+Total testing hours:
+
+## Definition of done
+When can we say the feature is adequately realised?
+
+---
+
+# Documentation
+Any documentation may be placed in this document or as sub-page of this page. If the latter, link it here. Make sure documentation is readable on it's own, independent of everything else in this wiki page.
+
+## Commercial
+Written for sales purposes. This part often doesn’t need to be provided with new features, as features are often additions to existing functionalities. If completely new functionalities are developed, give a short description of what it does and keep this part short and readable for anyone without technical knowledge.
+
+## Operator
+Written for those who use AMCS but don’t make changes to it. Operators use: mimics, alarm list, theme picker, report generator, maybe sporadically view the IO list, etc. They don’t close the application, except maybe for a reboot.
+
+## Technician
+This manual contains configuration documentation. Technicians can make changes to the system by using the mimic- & symbol editor, changing ini-files, configuring wago devices, adding soft PLCs, and using additional applications like moxa updater or serial tester.
+
+## Test scenarios
+
+---
+
+# Collateral
+If —in the course of development— any unforeseen maintenance, issues or rework is performed, mention it here with an estimate of the hours spent per item.
+
+---
+
+
+# Related items
+If —in the course of development— any new ideas or feature requests related to this work arise, mention them here. They are not to be picked up immediately.
+
+<Button onClick={()=>{alert("clicked")}} />

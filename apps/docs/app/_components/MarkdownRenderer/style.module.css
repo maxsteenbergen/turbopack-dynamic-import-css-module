@@ -1,0 +1,36 @@
+/* Markdown Renderer */
+
+.article {
+  color: hsl(var(--palette-affordance-default));
+  padding: var(--type-size-super);
+}
+
+.article h1 {
+  font-size: var(--type-size-mega);
+  margin: var(--size-macro) 0;
+}
+
+.article h2 {
+  font-size: var(--type-size-macro);
+  margin: var(--size-macro) 0;
+  margin-top: var(--type-size-giga);
+}
+
+.article h3 {
+  font-size: var(--type-size-major);
+  margin: var(--size-macro) 0;
+  margin-top: var(--type-size-mega);
+}
+
+.article p {
+  font-size: var(--type-size-medium);
+  line-height: var(--type-size-mega);
+  margin: var(--size-macro) 0;
+}
+
+.article hr {
+  border: none;
+  height: 1px;
+  background: hsl(var(--palette-canvas-highlight));
+  margin-top: var(--type-size-mega);
+}

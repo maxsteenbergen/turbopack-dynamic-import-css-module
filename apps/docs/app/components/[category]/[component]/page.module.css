@@ -1,0 +1,13 @@
+.datasheet {
+  flex: 1;
+  display: flex;
+}
+
+.description {
+  flex: 1;
+  overflow: scroll;
+}
+
+.datasheet .sandbox {
+  min-width: 50%;
+}

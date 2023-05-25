@@ -1,0 +1,19 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.preview {
+  flex: 1;
+  background: hsl(var(--palette-canvas-background));
+  display: grid;
+  place-items: center;
+}
+
+.menu {
+  flex: 1;
+  background: hsl(var(--palette-canvas-recessed));
+}

@@ -1,0 +1,72 @@
+:root {
+  --palette-canvas-recessed: 220, 17%, 14%;
+  --palette-canvas-background: 220, 17%, 17%;
+  --palette-canvas-highlight: 220, 18%, 30%;
+
+  --palette-affordance-default: 205, 28%, 55%;
+  --palette-affordance-dynamic: 205, 100%, 89%;
+  --palette-affordance-action: 205, 100%, 40%;
+
+  --palette-state-ok: 143, 40%, 50%;
+  --palette-state-caution: 45, 73%, 52%;
+  --palette-state-warning: 34, 100%, 48%;
+  --palette-state-alarm: 359, 93%, 59%;
+  --palette-state-disabled: 280, 50%, 50%;
+  --palette-state-unknown: 300, 100%, 50%;
+
+  --size-pico: 2px;
+  --size-nano: 6px;
+  --size-micro: 10px;
+  --size-minor: 14px;
+  --size-medium: 16px;
+  --size-major: 18px;
+  --size-macro: 22px;
+  --size-mega: 30px;
+  --size-giga: 46px;
+  --size-super: 78px;
+  --size-ultra: 142px;
+  --size-hyper: 270px;
+
+  --type-family-default: Noto Sans;
+  --type-family-fallback: Segoe UI;
+  --type-family-mono: Noto Mono;
+
+  --type-size-pico: 0.125rem;
+  --type-size-nano: 0.375rem;
+  --type-size-micro: 0.625rem;
+  --type-size-minor: 0.875rem;
+  --type-size-medium: 1rem;
+  --type-size-major: 1.125rem;
+  --type-size-macro: 1.375rem;
+  --type-size-mega: 1.875rem;
+  --type-size-giga: 2.875rem;
+  --type-size-super: 4.875rem;
+  --type-size-ultra: 8.875rem;
+  --type-size-hyper: 16.875rem;
+
+  --brightness-factor: 1;
+
+  /* MEDIUM COLORS */
+  --medium-fuel-oil: 20, 100%, 37%;
+  --medium-aviation-oil: 20, 100%, 37%;
+  --medium-lubrication-oil: 60, 100%, 44%;
+  --medium-sea-water: 120, 100%, 50%;
+  --medium-ballast-water: 120, 100%, 50%;
+  --medium-fire-main: 120, 100%, 50%;
+  --medium-fresh-water: 180, 100%, 50%;
+  --medium-cooling-water: 180, 100%, 50%;
+  --medium-bilge-water: 0, 0%, 78%;
+  --medium-sewage-water: 0, 0%, 78%;
+  --medium-gray-water: 0, 0%, 78%;
+  --medium-black-water: 0, 0%, 78%;
+  --medium-electricity-low: 120, 100%, 50%;
+  --medium-electricity-medium: 31, 100%, 50%;
+  --medium-electricity-high: 10, 100%, 50%;
+  --medium-compressed-air: 0, 0%, 10 0%;
+  --medium-data: 205, 100%, 89%;
+}
+
+
+
+
+

@@ -1,0 +1,29 @@
+.body {
+  display: flex;
+  overflow: hidden;
+  height: 100vh;
+  background: rebeccapurple;
+}
+
+.menu {
+  width: var(--size-hyper);
+  background: hsl(var(--palette-canvas-background));
+  height: 100vh;
+}
+
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /*background: hsl(var(--palette-canvas-background));*/
+  /*box-shadow: 0 var(--size-macro) var(--size-giga) hsl(var(--palette-canvas-recessed)) inset;*/
+  overflow: scroll;
+  background: hsl(180, 3%, 94%);
+}
+
+
+.header {
+  min-height: var(--size-hyper);
+  background: #fff;
+}

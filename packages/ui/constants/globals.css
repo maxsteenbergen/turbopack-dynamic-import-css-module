@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  height: 100vh;
+  /*overflow: hidden;*/
+  font-family: var(--type-family-default), var(--type-family-fallback);
+  font-size: var(--type-size-medium);
+  font-weight: 400;
+  text-rendering: geometricPrecision;
+}
+
+body {
+  background: hsl(var(--palette-canvas-background));
+  color: hsl(var(--palette-affordance-default));
+}
+
+
+/*---------------------------------------*/
+/* DEFAULT BROWSER STYLES OVERRIDES*/
+/*---------------------------------------*/
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  /*width: 100%; !* Specific width is required for Firefox. *!*/
+  border: 1px solid hsl(var(--palette-canvas-highlight));
+  background: hsl(var(--palette-canvas-recessed));
+  border-radius: var(--size-giga);
+  height: var(--size-nano);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--size-minor);
+  border-radius: var(--size-giga);
+  aspect-ratio: 1;
+  background-color: hsl(var(--palette-affordance-action));
+  border: 1px solid hsl(var(--palette-canvas-highlight));
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+  width: var(--size-macro);
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
